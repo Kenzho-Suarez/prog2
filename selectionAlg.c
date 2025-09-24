@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define MAX 100
 
-void insertionSort(int arr[MAX], int n);
+void selectionSort(int arr[MAX], int n);
 
 int main() {
     int arr[MAX];
@@ -14,29 +14,31 @@ int main() {
     for(int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
-    
-    insertionSort(arr, n);
-    printf("Sorted array in ascending order:\n");
 
+    selectionSort(arr, n);
+    
+    printf("Sorted array in ascending order:\n");
     for(int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
 }
 
-void insertionSort(int arr[MAX], int n) {
-    int i, j, key;
-    for (i = 1; i < n; i++) {
-        key = arr[i];
-        j = i - 1;
-            while(j >= 0 && arr[j] > key){
-                arr[j + 1] = arr[j];
-                j--;
-            }  
-    arr[j + 1] = key;
-    }
-    
-   
+void selectionSort(int arr[MAX], int n) {
+   int min, i, j, temp;
+   for(i = 0; i < n - 1; i++) {
+       min = i;
+       for(j = i + 1; j < n; j++) {
+           if(arr[j] < arr[min]) {
+               min = j;
+           }
+       }
+       temp = arr[i];
+       arr[i] = arr[min];
+       arr[min] = temp;
+       
+   }
 }
+
 
 
 
